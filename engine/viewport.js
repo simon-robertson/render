@@ -14,7 +14,7 @@ export const initializeViewport = async (window) => {
     canvas = window.document.querySelector('#viewport')
 
     if (canvas === null) {
-        throw new Error('Viewport canvas not found')
+        throw new Error('Failed to access the viewport canvas element')
     }
 
     synchronizeCanvasSize()
