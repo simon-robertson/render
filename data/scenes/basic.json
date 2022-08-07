@@ -2,7 +2,7 @@
     "emitters": {},
     "entities": {},
     "lights": {},
-    "scenes": {
+    "scene": {
         "emitters": [],
         "entities": [],
         "lights": []
