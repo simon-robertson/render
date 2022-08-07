@@ -1,0 +1,11 @@
+{
+    "name": "render",
+    "scripts": {
+        "start": "http-server -s -p 4000"
+    },
+    "devDependencies": {
+        "eslint": "8.21.0",
+        "http-server": "14.1.1"
+    },
+    "private": true
+}
