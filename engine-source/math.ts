@@ -152,10 +152,10 @@ export const rotateMatrix = (matrix: Matrix, rotation: Vector, output: Matrix = 
  */
 export const scaleMatrix = (matrix: Matrix, scale: Vector, output: Matrix = matrix): Matrix => {
     for (let i = 0; i < 16; i += 4) {
-        let x = matrix[i + 0]
-        let y = matrix[i + 1]
-        let z = matrix[i + 2]
-        let w = matrix[i + 3]
+        const x = matrix[i + 0]
+        const y = matrix[i + 1]
+        const z = matrix[i + 2]
+        const w = matrix[i + 3]
 
         cache[i + 0] = x * scale[0]
         cache[i + 1] = y * scale[1]
@@ -173,10 +173,10 @@ export const scaleMatrix = (matrix: Matrix, scale: Vector, output: Matrix = matr
  */
 export const translateMatrix = (matrix: Matrix, translation: Vector, output: Matrix = matrix): Matrix => {
     for (let i = 0; i < 16; i += 4) {
-        let x = matrix[i + 0]
-        let y = matrix[i + 1]
-        let z = matrix[i + 2]
-        let w = matrix[i + 3]
+        const x = matrix[i + 0]
+        const y = matrix[i + 1]
+        const z = matrix[i + 2]
+        const w = matrix[i + 3]
 
         cache[i + 0] = x + w * translation[0]
         cache[i + 1] = y + w * translation[1]
