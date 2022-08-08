@@ -1,0 +1,20 @@
+{
+    "include": ["./engine-source/**/*.ts"],
+    "compilerOptions": {
+        "lib": ["DOM", "ES2020"],
+        "types": ["webgl2"],
+        "target": "ES2020",
+        "module": "ES2020",
+        "moduleResolution": "Classic",
+        "outDir": "./engine",
+        "sourceMap": true,
+        "inlineSourceMap": false,
+        "preserveValueImports": false,
+        "preserveConstEnums": false,
+        "removeComments": true,
+        "strict": true
+    },
+    "typeAcquisition": {
+        "enable": false
+    }
+}

@@ -1,10 +1,7 @@
-/** @type {WebGL2RenderingContext} */
-let canvasContext
+let canvasContext: WebGL2RenderingContext
 
-/**
- * @param {HTMLCanvasElement} canvas
- */
-export const initializeRenderer = async (canvas) => {
+/** */
+export const initializeRenderer = async (canvas: HTMLCanvasElement): Promise<void> => {
     canvasContext = canvas.getContext('webgl2', {
         alpha: false,
         depth: true,
@@ -14,9 +11,9 @@ export const initializeRenderer = async (canvas) => {
         premultipliedAlpha: false,
         preserveDrawingBuffer: false,
         powerPreference: 'high-performance'
-    })
+    }) as WebGL2RenderingContext
 
     if (canvasContext === null) {
-        throw new Error('Failed to create the WebGL2 rendering context')
+        throw new Error('Failed to create the rendering context')
     }
 }
