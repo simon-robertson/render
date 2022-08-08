@@ -1,17 +1,14 @@
-/** @type {HTMLCanvasElement} */
-let canvas
+let canvas: HTMLCanvasElement
 
 /** */
-const synchronizeCanvasSize = () => {
+const synchronizeCanvasSize = (): void => {
     canvas.width = canvas.offsetWidth
     canvas.height = canvas.offsetHeight
 }
 
-/**
- * @param {Window} window
- */
-export const initializeViewport = async (window) => {
-    canvas = window.document.querySelector('#viewport')
+/** */
+export const initializeViewport = async (): Promise<void> => {
+    canvas = document.querySelector('#viewport') as HTMLCanvasElement
 
     if (canvas === null) {
         throw new Error('Failed to access the viewport canvas element')
@@ -23,4 +20,6 @@ export const initializeViewport = async (window) => {
 }
 
 /** */
-export const getViewportCanvas = () => canvas
+export const getViewportCanvas = (): HTMLCanvasElement => {
+    return canvas
+}

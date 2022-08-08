@@ -1,26 +1,28 @@
-/** @typedef {number} Pixels */
-/** @typedef {number} Radians */
-/** @typedef {number} Units */
-/** @typedef {number[]} Matrix */
-/** @typedef {number[]} Vector */
+import { Matrix, Vector } from './types/math.js'
+import { Pixels, Radians, Units } from './types/units.js'
 
-/** @type {Matrix} */
-const cache = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+/** */
+const cache: Matrix = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-/**
- * @returns {Matrix}
- */
-export const createMatrix = () => [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+/** */
+export const createMatrix = (): Matrix => {
+    return [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]
+}
 
 /**
- * @param {Pixels} width viewport width
- * @param {Pixels} height viewport height
- * @param {Radians} angle field of view
- * @param {Units} near clipping distance
- * @param {Units} far clipping distance
- * @returns {Matrix}
+ * @param width viewport width
+ * @param height viewport height
+ * @param angle field of view
+ * @param near clipping distance
+ * @param far clipping distance
  */
-export const createProjectionMatrix = (width, height, angle, near, far) => {
+export const createProjectionMatrix = (
+    width: Pixels,
+    height: Pixels,
+    angle: Radians,
+    near: Units,
+    far: Units
+): Matrix => {
     const a = width / height
     const f = Math.tan(Math.PI * 0.5 - angle * 0.5)
     const i = 1 / (near - far)
@@ -37,21 +39,21 @@ export const createProjectionMatrix = (width, height, angle, near, far) => {
     return matrix
 }
 
-/**
- * @returns {Vector}
- */
-export const createVector = () => [0, 0, 0, 1]
+/** */
+export const createVector = (): Vector => {
+    return [0, 0, 0, 1]
+}
 
 /**
- * @param {Matrix} matrix
- * @param {Matrix} output
+ * @param matrix
+ * @param output
  */
-export const copyMatrix = (matrix, output = null) => {
+export const copyMatrix = (matrix: Matrix, output?: Matrix): Matrix => {
     if (matrix === output) {
         return output
     }
 
-    if (output === null) {
+    if (output === undefined) {
         output = createMatrix()
     }
 
@@ -62,13 +64,16 @@ export const copyMatrix = (matrix, output = null) => {
     return output
 }
 
-/** */
-export const copyVector = (vector, output = null) => {
+/**
+ * @param vector
+ * @param output
+ */
+export const copyVector = (vector: Vector, output?: Vector): Vector => {
     if (vector === output) {
         return output
     }
 
-    if (output === null) {
+    if (output === undefined) {
         output = createVector()
     }
 
@@ -80,10 +85,10 @@ export const copyVector = (vector, output = null) => {
 }
 
 /**
- * @param {Matrix} matrix
- * @param {Vector} rotation
+ * @param matrix
+ * @param rotation
  */
-export const rotateMatrix = (matrix, rotation, output = matrix) => {
+export const rotateMatrix = (matrix: Matrix, rotation: Vector, output: Matrix = matrix): Matrix => {
     if (rotation[1] !== 0) {
         const c = Math.cos(rotation[1])
         const s = Math.sin(rotation[1])
@@ -142,10 +147,10 @@ export const rotateMatrix = (matrix, rotation, output = matrix) => {
 }
 
 /**
- * @param {Matrix} matrix
- * @param {Vector} scale
+ * @param matrix
+ * @param scale
  */
-export const scaleMatrix = (matrix, scale, output = matrix) => {
+export const scaleMatrix = (matrix: Matrix, scale: Vector, output: Matrix = matrix): Matrix => {
     for (let i = 0; i < 16; i += 4) {
         let x = matrix[i + 0]
         let y = matrix[i + 1]
@@ -162,11 +167,11 @@ export const scaleMatrix = (matrix, scale, output = matrix) => {
 }
 
 /**
- * @param {Matrix} matrix
- * @param {Vector} translation
- * @param {Matrix} output
+ * @param matrix
+ * @param translation
+ * @param output
  */
-export const translateMatrix = (matrix, translation, output = null) => {
+export const translateMatrix = (matrix: Matrix, translation: Vector, output: Matrix = matrix): Matrix => {
     for (let i = 0; i < 16; i += 4) {
         let x = matrix[i + 0]
         let y = matrix[i + 1]
@@ -183,10 +188,10 @@ export const translateMatrix = (matrix, translation, output = null) => {
 }
 
 /**
- * @param {Vector} vector
- * @param {Matrix} transformation
+ * @param vector
+ * @param transformation
  */
-export const transformVector = (vector, transformation, output = vector) => {
+export const transformVector = (vector: Vector, transformation: Matrix, output: Vector = vector): Vector => {
     const x = vector[0]
     const y = vector[1]
     const z = vector[2]
