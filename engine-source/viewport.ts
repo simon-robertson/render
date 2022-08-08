@@ -8,10 +8,10 @@ const synchronizeCanvasSize = (): void => {
 
 /** */
 export const initializeViewport = async (): Promise<void> => {
-    canvas = document.querySelector('#viewport') as HTMLCanvasElement
+    canvas = document.getElementById('canvas') as HTMLCanvasElement
 
     if (canvas === null) {
-        throw new Error('Failed to access the viewport canvas element')
+        throw new Error('Failed to find canvas element')
     }
 
     synchronizeCanvasSize()

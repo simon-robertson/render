@@ -1,6 +1,10 @@
 {
-    "basic": {
-        "name": "Basic",
-        "description": ""
-    }
+    "descriptors": [
+        {
+            "id": "basic",
+            "name": "Basic",
+            "description": "",
+            "available": true
+        }
+    ]
 }

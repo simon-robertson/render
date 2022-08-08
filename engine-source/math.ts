@@ -2,7 +2,7 @@ import { Matrix, Vector } from './types/math.js'
 import { Pixels, Radians, Units } from './types/units.js'
 
 /** */
-const cache: Matrix = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+const store: Matrix = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 /** */
 export const createMatrix = (): Matrix => {
@@ -100,10 +100,10 @@ export const rotateMatrix = (matrix: Matrix, rotation: Vector, output: Matrix = 
             const z = matrix[i + 2]
             const w = matrix[i + 3]
 
-            cache[i + 0] = x * c + z * n
-            cache[i + 1] = y
-            cache[i + 2] = x * s + z * c
-            cache[i + 3] = w
+            store[i + 0] = x * c + z * n
+            store[i + 1] = y
+            store[i + 2] = x * s + z * c
+            store[i + 3] = w
         }
     }
 
@@ -118,10 +118,10 @@ export const rotateMatrix = (matrix: Matrix, rotation: Vector, output: Matrix = 
             const z = matrix[i + 2]
             const w = matrix[i + 3]
 
-            cache[i + 0] = x
-            cache[i + 1] = y * c + z * s
-            cache[i + 2] = y * n + z * c
-            cache[i + 3] = w
+            store[i + 0] = x
+            store[i + 1] = y * c + z * s
+            store[i + 2] = y * n + z * c
+            store[i + 3] = w
         }
     }
 
@@ -136,14 +136,14 @@ export const rotateMatrix = (matrix: Matrix, rotation: Vector, output: Matrix = 
             const z = matrix[i + 2]
             const w = matrix[i + 3]
 
-            cache[i + 0] = x * c + y * s
-            cache[i + 1] = x * n + y * c
-            cache[i + 2] = z
-            cache[i + 3] = w
+            store[i + 0] = x * c + y * s
+            store[i + 1] = x * n + y * c
+            store[i + 2] = z
+            store[i + 3] = w
         }
     }
 
-    return copyMatrix(cache, output)
+    return copyMatrix(store, output)
 }
 
 /**
@@ -157,13 +157,13 @@ export const scaleMatrix = (matrix: Matrix, scale: Vector, output: Matrix = matr
         const z = matrix[i + 2]
         const w = matrix[i + 3]
 
-        cache[i + 0] = x * scale[0]
-        cache[i + 1] = y * scale[1]
-        cache[i + 2] = z * scale[2]
-        cache[i + 3] = w
+        store[i + 0] = x * scale[0]
+        store[i + 1] = y * scale[1]
+        store[i + 2] = z * scale[2]
+        store[i + 3] = w
     }
 
-    return copyMatrix(cache, output)
+    return copyMatrix(store, output)
 }
 
 /**
@@ -178,13 +178,13 @@ export const translateMatrix = (matrix: Matrix, translation: Vector, output: Mat
         const z = matrix[i + 2]
         const w = matrix[i + 3]
 
-        cache[i + 0] = x + w * translation[0]
-        cache[i + 1] = y + w * translation[1]
-        cache[i + 2] = z + w * translation[2]
-        cache[i + 3] = w
+        store[i + 0] = x + w * translation[0]
+        store[i + 1] = y + w * translation[1]
+        store[i + 2] = z + w * translation[2]
+        store[i + 3] = w
     }
 
-    return copyMatrix(cache, output)
+    return copyMatrix(store, output)
 }
 
 /**
@@ -197,10 +197,10 @@ export const transformVector = (vector: Vector, transformation: Matrix, output: 
     const z = vector[2]
     const w = vector[3]
 
-    cache[0] = x * transformation[0] + y * transformation[4] + z * transformation[8] + w * transformation[12]
-    cache[1] = x * transformation[1] + y * transformation[5] + z * transformation[9] + w * transformation[13]
-    cache[2] = x * transformation[2] + y * transformation[6] + z * transformation[10] + w * transformation[14]
-    cache[3] = x * transformation[3] + y * transformation[7] + z * transformation[11] + w * transformation[15]
+    store[0] = x * transformation[0] + y * transformation[4] + z * transformation[8] + w * transformation[12]
+    store[1] = x * transformation[1] + y * transformation[5] + z * transformation[9] + w * transformation[13]
+    store[2] = x * transformation[2] + y * transformation[6] + z * transformation[10] + w * transformation[14]
+    store[3] = x * transformation[3] + y * transformation[7] + z * transformation[11] + w * transformation[15]
 
-    return copyVector(cache, output)
+    return copyVector(store, output)
 }

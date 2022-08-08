@@ -1,5 +1,5 @@
-import { initializeRenderer } from './renderer.js'
 import { getViewportCanvas, initializeViewport } from './viewport.js'
+import { initializeRenderer } from './renderer.js'
 
 /** */
 const main = async (): Promise<void> => {

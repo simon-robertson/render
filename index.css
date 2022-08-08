@@ -1,20 +1,18 @@
-.hud {
+.viewport {
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     position: fixed;
     overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 64px 1fr 64px;
     pointer-events: none;
     background-color: #000000;
 }
 
-.viewport {
+.canvas {
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
+    position: fixed;
 }
