@@ -1,5 +1,4 @@
-/engine/types
-/engine/**/*.map
+/engine
 /node_modules
 
 .DS_Store
