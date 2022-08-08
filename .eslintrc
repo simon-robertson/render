@@ -1,11 +1,11 @@
 {
     "root": true,
-    "extends": ["eslint:recommended"],
-    "parserOptions": {
-        "sourceType": "module"
-    },
-    "env": {
-        "browser": true,
-        "es2020": true
-    }
+    "overrides": [
+        {
+            "files": ["./engine-source/**/*.ts"],
+            "plugins": ["@typescript-eslint"],
+            "extends": ["plugin:@typescript-eslint/recommended"],
+            "parser": "@typescript-eslint/parser"
+        }
+    ]
 }

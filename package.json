@@ -6,6 +6,8 @@
     },
     "devDependencies": {
         "@types/webgl2": "0.0.6",
+        "@typescript-eslint/eslint-plugin": "5.32.0",
+        "@typescript-eslint/parser": "5.32.0",
         "eslint": "8.21.0",
         "http-server": "14.1.1",
         "typescript": "4.7.4"
